@@ -62,7 +62,7 @@ def flip(image, random_flip):
         image = np.fliplr(image)
     return image
 
-
+#A small part of code from MTCNN, github: https://github.com/AITTSMD/MTCNN-Tensorflow
 def extract_face_from_image(args):
     with tf.Graph().as_default():
         gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.25)
@@ -136,7 +136,7 @@ def extract_face_from_image(args):
     return images
 
 
-
+#A small part of code from FaceNet, github: https://github.com/davidsandberg/facenet
 def get_embedding_vector(args, images):
     with tf.Graph().as_default():
       
@@ -161,6 +161,8 @@ def get_embedding_vector(args, images):
             emb_array = sess.run(embeddings, feed_dict=feed_dict)
     return emb_array
 
+
+#Computing the distance from all vectors with the give face feature map
 def compute_distances(args, emb_array):
     
     embedding_path = args.feature_map
